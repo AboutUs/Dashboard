@@ -1,0 +1,37 @@
+<%= form_for(@data_point) do |f| %>
+  <% if @data_point.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@data_point.errors.count, "error") %> prohibited this data_point from being saved:</h2>
+
+      <ul>
+      <% @data_point.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :family %><br />
+    <%= f.text_field :family %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value_num %><br />
+    <%= f.text_field :value_num %>
+  </div>
+  <div class="field">
+    <%= f.label :value_str %><br />
+    <%= f.text_field :value_str %>
+  </div>
+  <div class="field">
+    <%= f.label :recorded_at %><br />
+    <%= f.datetime_select :recorded_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

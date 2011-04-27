@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Perspective:</b>
+  <%= @entry.perspective_id %>
+</p>
+
+<p>
+  <b>Family:</b>
+  <%= @entry.family %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @entry.name %>
+</p>
+
+<p>
+  <b>Featured:</b>
+  <%= @entry.featured %>
+</p>
+
+<p>
+  <b>Hidden:</b>
+  <%= @entry.hidden %>
+</p>
+
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

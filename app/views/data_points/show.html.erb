@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Family:</b>
+  <%= @data_point.family %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @data_point.name %>
+</p>
+
+<p>
+  <b>Value num:</b>
+  <%= @data_point.value_num %>
+</p>
+
+<p>
+  <b>Value str:</b>
+  <%= @data_point.value_str %>
+</p>
+
+<p>
+  <b>Recorded at:</b>
+  <%= @data_point.recorded_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_data_point_path(@data_point) %> |
+<%= link_to 'Back', data_points_path %>
