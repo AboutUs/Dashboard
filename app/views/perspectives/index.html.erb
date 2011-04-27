@@ -1,0 +1,27 @@
+<h1>Listing perspectives</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Show new entries by default?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @perspectives.each do |perspective| %>
+  <tr>
+    <td><%= button_to 'Set', watch_perspective_path(perspective), :method => 'post' %></td>
+    <td><%= perspective.name %></td>
+    <td><%= perspective.show_by_default %></td>
+    <td><%= link_to 'Show', perspective %></td>
+    <td><%= link_to 'Edit', edit_perspective_path(perspective) %></td>
+    <td><%= link_to 'Destroy', perspective, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Perspective', new_perspective_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @perspective.name %>
+</p>
+
+<p>
+  <b>Show new entries by default?</b>
+  <%= @perspective.show_by_default %>
+</p>
+
+
+<%= link_to 'Edit', edit_perspective_path(@perspective) %> |
+<%= link_to 'Back', perspectives_path %>
