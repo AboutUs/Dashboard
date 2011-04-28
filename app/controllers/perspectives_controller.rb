@@ -15,6 +15,8 @@ class PerspectivesController < ApplicationController
   def show
     @perspective = Perspective.find(params[:id])
 
+    @data_points = DataPoint.current
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @perspective }

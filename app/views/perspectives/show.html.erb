@@ -13,3 +13,21 @@
 
 <%= link_to 'Edit', edit_perspective_path(@perspective) %> |
 <%= link_to 'Back', perspectives_path %>
+
+
+<table>
+  <tr>
+    <th><%= @data_points.length %></th>
+    <th>Family</th>
+    <th>Name</th>
+    <th>When</th>
+  </tr>
+  <% @data_points.each do |dp| %>
+  <tr>
+    <td><%= dp.id %></td>
+    <td><%= dp.family %></td>
+    <td><%= dp.name %></td>
+    <td><%= time_ago_in_words dp.recorded_at %></td>
+  </tr>
+  <% end %>
+</table>

@@ -12,7 +12,7 @@
 
 <% @perspectives.each do |perspective| %>
   <tr>
-    <td><%= button_to 'Set', watch_perspective_path(perspective), :method => 'post' %></td>
+    <td><%= button_to 'Set as Default', watch_perspective_path(perspective), :method => 'post' %></td>
     <td><%= perspective.name %></td>
     <td><%= perspective.show_by_default %></td>
     <td><%= link_to 'Show', perspective %></td>
