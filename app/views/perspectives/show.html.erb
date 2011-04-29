@@ -1,33 +1,25 @@
-<p id="notice"><%= notice %></p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dash</title>
+    <%= stylesheet_link_tag 'dashboard' %>
+    <meta http-equiv="refresh" content="120">
+  </head>
+  <body>
+    <div id="wrapper">
 
-<p>
-  <b>Name:</b>
-  <%= @perspective.name %>
-</p>
-
-<p>
-  <b>Show new entries by default?</b>
-  <%= @perspective.show_by_default %>
-</p>
-
-
-<%= link_to 'Edit', edit_perspective_path(@perspective) %> |
-<%= link_to 'Back', perspectives_path %>
-
-
-<table>
-  <tr>
-    <th><%= @data_points.length %></th>
-    <th>Family</th>
-    <th>Name</th>
-    <th>When</th>
-  </tr>
-  <% @data_points.each do |dp| %>
-  <tr>
-    <td><%= dp.id %></td>
-    <td><%= dp.family %></td>
-    <td><%= dp.name %></td>
-    <td><%= time_ago_in_words dp.recorded_at %></td>
-  </tr>
-  <% end %>
-</table>
+      <% @grouped_data_points.each do |family, data_points| %>
+      <div class="nonfeatured">
+        <h2><%= family.titleize %></h2>
+        <dl>
+          <% data_points.each do |dp| %>
+            <dt><%= dp.name %></dt>
+            <dd><%= dp.value %></dd>
+          <% end %>
+        </dl>
+      </div>
+      <% end %>
+    </div>
+  </body>
+</html>

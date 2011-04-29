@@ -1,0 +1,97 @@
+body {
+    font-family: Helvetica;
+    margin: 0;
+    padding: 0;
+    background: #222;
+    color: #eee;
+}
+
+div#wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* background: -webkit-gradient( */
+    /*     linear, */
+    /*     left bottom, */
+    /*     left top, */
+    /*     color-stop(0.99, rgb(110,110,110)), */
+    /*     color-stop(0.01, rgb(74,74,74))); */
+}
+
+#wrapper div {
+    padding: 1em 0;
+}
+#wrapper .nonfeatured {
+    width: 40%;
+    font-size : 1.5em;
+    float: left;
+    -webkit-border-radius: 10px;
+    margin: 1em 2em;
+
+    background: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.99, #444),
+        color-stop(0.01, #222));
+}
+
+#wrapper .featured dt {
+    width: 45%;
+    font-weight: 100;
+    font-family: "Helvetica Neue";
+}
+#wrapper .featured {
+    width: 100%;
+    clear: both;
+    font-size : 3em;
+}
+.featured .number { padding-left: 1em; }
+
+#wrapper dl:after {
+    /* Clearfix */
+ content: "\0020";
+ display: block;
+ height: 0;
+ clear: both;
+ visibility: hidden;
+ overflow:hidden;
+}
+
+
+.featured h2 {
+    display: none;
+}
+h2 {
+    padding: 0;
+    margin: 0 0 0.6em;
+    /* color : #aaa; */
+    font-size : 1.3em;
+    text-align : center;
+    font-weight: normal;
+    letter-spacing: 0.055em;
+}
+#wrapper dl {
+    padding: 0;
+    margin: 0;
+}
+#wrapper dl dt {
+    padding : 0 1em 0 ;
+    width : 10em;
+    text-align : right;
+    float: left;
+    clear: left;
+}
+#wrapper .nonfeatured dl dt {
+    font-family: "Helvetica Neue";
+    letter-spacing: 0.055em;
+    font-weight: 150;
+
+}
+#wrapper dl dd {
+    font-family: "Helvetica Neue";
+    margin : 0;
+    float: left;
+    clear : right;
+}

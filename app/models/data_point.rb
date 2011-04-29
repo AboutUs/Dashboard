@@ -33,4 +33,9 @@ WHERE a1.max_recorded_at = d1.recorded_at AND d1.family = a1.family AND d1.name 
           :value_str => value_str
         })
   end
+
+
+  def value
+    value_num || value_str
+  end
 end
