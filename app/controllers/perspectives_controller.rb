@@ -66,6 +66,17 @@ class PerspectivesController < ApplicationController
 
     respond_to do |format|
       if @perspective.update_attributes(params[:perspective])
+        if params[:data_point] && params[:data_point][:memberships]
+          memberships = []
+
+          params[:data_point][:memberships].each do |membership|
+            family, name = membership.split("|||")
+            memberships << Membership.new({ :family => family, :name => name })
+          end
+
+          @perspective.memberships = memberships
+          @perspective.save!
+        end
         format.html { redirect_to(@perspective, :notice => 'Perspective was successfully updated.') }
         format.xml  { head :ok }
       else
