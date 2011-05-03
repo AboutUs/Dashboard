@@ -12,17 +12,25 @@
   <body>
     <div id="wrapper">
 
-      <% @grouped_data_points.each do |family, data_points| %>
+      <% @perspective.grouped_data_points.each do |family, data_points| %>
       <div class="nonfeatured">
         <h2><%= family.titleize %></h2>
         <dl>
           <% data_points.each do |dp| %>
-            <dt><%= dp.name %></dt>
+            <dt><%= dp.name.titleize %></dt>
             <dd><%= dp.value %></dd>
           <% end %>
         </dl>
       </div>
       <% end %>
     </div>
+
+    <footer>
+      <ul>
+        <li><%= link_to "Edit Perspective", edit_perspective_path(@perspective) %></li>
+        <li><%= link_to "Perspectives", perspectives_path %></li>
+      </ul>
+      <div class="clearall"></div>
+    </footer>
   </body>
 </html>
