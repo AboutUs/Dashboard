@@ -1,5 +1,6 @@
 class Perspective < ActiveRecord::Base
-
+  has_many :memberships
+  
   def data_points
     DataPoint.current
   end

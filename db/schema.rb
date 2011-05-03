@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503222643) do
+ActiveRecord::Schema.define(:version => 20110503223408) do
 
   create_table "data_points", :force => true do |t|
     t.string   "family"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20110503222643) do
 
   add_index "data_points", ["family", "name"], :name => "index_data_points_on_family_and_name"
 
-  create_table "entries", :force => true do |t|
+  create_table "memberships", :force => true do |t|
     t.integer  "perspective_id"
     t.string   "family"
     t.string   "name"
