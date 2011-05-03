@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428224126) do
+ActiveRecord::Schema.define(:version => 20110503222643) do
 
   create_table "data_points", :force => true do |t|
     t.string   "family"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20110428224126) do
 
   create_table "perspectives", :force => true do |t|
     t.string   "name"
-    t.boolean  "show_by_default"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

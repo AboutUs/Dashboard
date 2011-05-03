@@ -15,9 +15,24 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :show_by_default, 'Show new entries by default?' %><br />
-    <%= f.check_box :show_by_default %>
+
+  <div class="entries">
+    <table>
+      <tr>
+        <th>Family</th>
+        <th>Name</th>
+        <th>Show</th>
+        <th>Feature</th>
+      </tr>
+      <% DataPoint.current.each do |dp| %>
+      <tr>
+        <td><%= dp.family.titleize %></td>
+        <td><%= dp.name.titleize %></td>
+        <td><%= check_box_tag 'data_point' %></td>
+        <td><%= check_box_tag 'data_point' %></td>
+      </tr>
+      <% end %>
+    </table>
   </div>
   <div class="actions">
     <%= f.submit %>
