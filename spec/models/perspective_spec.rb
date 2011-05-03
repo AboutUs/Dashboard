@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Perspective do
   describe '#data_points' do
     before do
-      a = DataPoint.create!(:recorded_at => 3.days.ago, :family => 'a', :name => 'b', :value_num => 99)
-      b = DataPoint.create!(:recorded_at => 0.days.ago, :family => 'a', :name => 'b', :value_num => 33)
-      c = DataPoint.create!(:recorded_at => 13.days.ago, :family => 'a', :name => 'c', :value_num => 0)
+      @a = DataPoint.create!(:recorded_at => 3.days.ago, :family => 'a', :name => 'b', :value_num => 99)
+      @b = DataPoint.create!(:recorded_at => 0.days.ago, :family => 'a', :name => 'b', :value_num => 33)
+      @c = DataPoint.create!(:recorded_at => 13.days.ago, :family => 'a', :name => 'c', :value_num => 0)
     end
     it 'should return no data points' do
       perspective = Perspective.create!
@@ -15,7 +15,9 @@ describe Perspective do
     describe 'with #entries' do
       it 'should return all current data points' do
         perspective = Perspective.create!
-        perspective.data_points.should == [b,c]
+        Membership.create!({ :family => 'a', :name => 'b', :perspective => perspective })
+        Membership.create!({ :family => 'a', :name => 'c', :perspective => perspective })
+        perspective.reload.data_points.should == [@b,@c]
       end
     end
   end
@@ -26,6 +28,8 @@ describe Perspective do
       b = DataPoint.create!(:recorded_at => 0.days.ago, :family => 'a', :name => 'b', :value_num => 33)
       c = DataPoint.create!(:recorded_at => 13.days.ago, :family => 'a', :name => 'c', :value_num => 0)
       perspective = Perspective.create!
+      Membership.create!({ :family => 'a', :name => 'b', :perspective => perspective })
+      Membership.create!({ :family => 'a', :name => 'c', :perspective => perspective })
       perspective.grouped_data_points.should == { 'a' => [b,c] }
     end
   end
