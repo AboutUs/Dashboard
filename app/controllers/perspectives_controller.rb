@@ -18,12 +18,9 @@ class PerspectivesController < ApplicationController
     @data_points = DataPoint.current
 
     respond_to do |format|
-      format.html do
-        @grouped_data_points = @data_points.group_by &:family
-        render :layout => false
-      end
-      format.json { render :json => @data_points }
-      format.xml  { render :xml => @perspective }
+      format.html { render :layout => false }
+      format.json { render :json => @perspective.data_points }
+      format.xml  { render :xml => @perspective.data_points }
     end
   end
 

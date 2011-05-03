@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe Perspective do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#data_points' do
+    it 'should return all current data points' do
+      a = DataPoint.create!(:recorded_at => 3.days.ago, :family => 'a', :name => 'b', :value_num => 99)
+      b = DataPoint.create!(:recorded_at => 0.days.ago, :family => 'a', :name => 'b', :value_num => 33)
+      c = DataPoint.create!(:recorded_at => 13.days.ago, :family => 'a', :name => 'c', :value_num => 0)
+      perspective = Perspective.create!
+      perspective.data_points.should == [b,c]
+    end
+  end
 end
