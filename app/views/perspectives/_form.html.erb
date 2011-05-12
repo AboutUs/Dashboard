@@ -28,8 +28,8 @@
       <tr>
         <td><%= dp.family.titleize %></td>
         <td><%= dp.name.titleize %></td>
-        <td><%= check_box_tag 'data_point[memberships][]', [dp.family, dp.name].join("|||") %></td>
-        <td>TODO</td>
+        <td><%= show_data_point_check_box @perspective, dp %></td>
+        <td><%= feature_data_point_check_box @perspective, dp %></td>
       </tr>
       <% end %>
     </table>

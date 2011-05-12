@@ -66,12 +66,16 @@ class PerspectivesController < ApplicationController
 
     respond_to do |format|
       if @perspective.update_attributes(params[:perspective])
+
+        features = (params[:data_point] && params[:data_point][:features]) || []
+
         if params[:data_point] && params[:data_point][:memberships]
           memberships = []
 
           params[:data_point][:memberships].each do |membership|
+            featured     = features.include? membership
             family, name = membership.split("|||")
-            memberships << Membership.new({ :family => family, :name => name })
+            memberships << Membership.new({ :family => family, :name => name, :featured => featured })
           end
 
           @perspective.memberships = memberships
