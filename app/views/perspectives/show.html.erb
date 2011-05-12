@@ -6,23 +6,44 @@
     <%= stylesheet_link_tag 'dashboard' %>
     <%= javascript_include_tag :defaults %>
     <%= javascript_include_tag 'jquery.masonry.min' %>
+    <%= javascript_include_tag 'jquery.sparkline.min' %>
     <%= javascript_include_tag 'dashboard' %>
+
     <meta http-equiv="refresh" content="120">
   </head>
   <body>
     <div id="wrapper">
 
-      <% @perspective.grouped_data_points.each do |family, data_points| %>
-      <div class="nonfeatured">
-        <h2><%= family.titleize %></h2>
+      <div class="featured">
         <dl>
-          <% data_points.each do |dp| %>
-            <dt><%= dp.name.titleize %></dt>
-            <dd><%= dp.value %></dd>
+          <% @perspective.featured_data_points.each do |dp| %>
+            <dt><%= dp.family.titleize %> <%= dp.name.titleize %></dt>
+            <% if dp.numerical? %>
+              <dd>
+                <span class="sparkline"><%= dp.history.join(",") %></span>
+                <span class="number"><%= dp.value %></span>
+              </dd>
+            <% else %>
+              <dd><%= dp.value %></dd>
+            <% end %>
           <% end %>
         </dl>
       </div>
-      <% end %>
+
+      <div id="nonfeatured">
+        <% @perspective.grouped_data_points.each do |family, data_points| %>
+
+          <div class="nonfeatured">
+            <h2><%= family.titleize %></h2>
+            <dl>
+              <% data_points.each do |dp| %>
+                <dt><%= dp.name.titleize %></dt>
+                <dd><%= dp.value %></dd>
+              <% end %>
+            </dl>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <footer>

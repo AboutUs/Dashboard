@@ -102,8 +102,9 @@ footer {
    left: 0;
    width: 100%;
    border-top: 1px solid #ddd;
-   background: #bbb;
-   padding: 15px;
+   background: #aaa;
+   padding: 10px;
+   font-size: 11px;
 }
 
 footer ul {
@@ -114,12 +115,12 @@ footer ul {
 
 footer ul li {
    list-style: none;
-   padding: 0 20px 0 0;
+   padding: 0 10px 0 0;
    margin: 0;
    float: left;
 }
 
 a, a:link, a:visited {
    text-decoration: none;
-   color: #33f;
+   color: #333;
 }

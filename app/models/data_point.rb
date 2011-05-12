@@ -38,4 +38,26 @@ WHERE a1.max_recorded_at = d1.recorded_at AND d1.family = a1.family AND d1.name 
   def value
     value_num || value_str
   end
+
+  HISTORY_ACCURACY = 30         # Maximum number of results returned by #history
+
+  # Sampling of values over the history of this data point. Makes some
+  # effort to ensure results are not skewed by over-sampling of a
+  # specific period of time.
+  def history
+    historical = DataPoint.find_all_by_family_and_name(family, name, :order => :recorded_at, :conditions => [ 'value_num IS NOT NULL', 'recorded_at IS NOT NULL' ])
+    slice_size = (historical.last.recorded_at.to_i - historical.last.recorded_at.to_i) / HISTORY_ACCURACY
+    slices = [historical.first]
+    next_time = historical.first.recorded_at.to_i + slice_size
+    historical.each do |dp|
+      next unless dp.recorded_at.to_i >= next_time
+      slices << dp
+      next_time += slice_size
+    end
+    slices.map &:value_num
+  end
+
+  def numerical?
+    !!value_num
+  end
 end
