@@ -34,6 +34,27 @@ WHERE a1.max_recorded_at = d1.recorded_at AND d1.family = a1.family AND d1.name 
         })
   end
 
+  def self.save(family, name, value, recorded_at)
+    value_num = value
+    value_str = value
+
+    if value_num.to_i.to_s == value_num.to_s
+      value_num = value_num.to_i
+    else
+      value_num = nil
+    end
+
+    attributes = {
+      :family      => family,
+      :name        => name,
+      :value_num   => value_num,
+      :value_str   => value_str,
+      :recorded_at => recorded_at
+    }
+    
+    new(attributes).save!
+  end
+
 
   def value
     value_num || value_str
@@ -53,6 +74,10 @@ WHERE a1.max_recorded_at = d1.recorded_at AND d1.family = a1.family AND d1.name 
       next unless dp.recorded_at.to_i >= next_time
       slices << dp
       next_time += slice_size
+    end
+    unless slices.include?(historical.last) # Always include last
+      slices.pop
+      slices << historical.last
     end
     slices.map &:value_num
   end
