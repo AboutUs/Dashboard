@@ -1,0 +1,6 @@
+X HTTP auth for everything except POST /dashboard
+- Production Server on vhost
+- HAProxy pass-thru
+- Move A record
+- Import old data
+- Interactive front-end for creating data points
