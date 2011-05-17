@@ -1,4 +1,6 @@
 class PerspectivesController < ApplicationController
+  before_filter :require_http_authentication
+  
   # GET /perspectives
   # GET /perspectives.xml
   def index
