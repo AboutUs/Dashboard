@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+set -x
+set -u
+
+DEPLOY_SHA=$1
+
+sudo su - deploy -c "cd /www/aboutus/Dashboard && git fetch && git checkout '$DEPLOY_SHA' && rake db:migrate"
+sudo su - root -c "/etc/init.d/nginx stop"
+sleep 1
+sudo su - root -c "/etc/init.d/nginx start"
