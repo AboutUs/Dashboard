@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_http_authentication
-    return if AUTH_PARAMS.empty?
+    return if (!AUTH_PARAMS || AUTH_PARAMS.empty?)
     authenticate_or_request_with_http_basic do |username, password|
       username == AUTH_PARAMS[:username] && password == AUTH_PARAMS[:password]
     end

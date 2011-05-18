@@ -8,6 +8,14 @@ GROUP BY family,`name`) a1
 WHERE a1.max_recorded_at = d1.recorded_at AND d1.family = a1.family AND d1.name = a1.name")
   end
 
+  def self.families
+    connection.select_all("SELECT DISTINCT(family) FROM data_points").map {|x| x['family'] }
+  end
+
+  def self.names
+    connection.select_all("SELECT DISTINCT(name) FROM data_points").map {|x| x['name'] }
+  end
+
   def self.from_couch(obj)
     recorded_at = Time.at obj.delete('time_code')
     family      = obj.delete('collection')

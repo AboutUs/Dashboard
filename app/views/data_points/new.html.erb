@@ -3,3 +3,13 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', data_points_path %>
+
+<script>
+  $(function() {
+    var families = <%= DataPoint.families.to_json.html_safe %>;
+    var names = <%= DataPoint.names.to_json.html_safe %>;
+
+    $('#data_point_family').autocomplete({ source: families });
+    $('#data_point_name').autocomplete({ source: names });
+  });
+</script>

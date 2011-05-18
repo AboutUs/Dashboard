@@ -20,17 +20,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :value_num %><br />
-    <%= f.text_field :value_num %>
+    <label>Value<br />
+      <input type="text" name="value" />
+    </label>
+
   </div>
-  <div class="field">
-    <%= f.label :value_str %><br />
-    <%= f.text_field :value_str %>
-  </div>
-  <div class="field">
-    <%= f.label :recorded_at %><br />
-    <%= f.datetime_select :recorded_at %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
