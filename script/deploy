@@ -5,7 +5,13 @@ set -u
 
 DEPLOY_SHA=$1
 
-sudo su - deploy -c "cd /www/aboutus/Dashboard && git fetch && git checkout $DEPLOY_SHA && bundle install && rake db:migrate"
+if [ -x /var/lib/gems/1.8/bin/bundle ]; then
+  BUNDLE="/var/lib/gems/1.8/bin/bundle"
+else
+  BUNDLE="bundle"
+fi
+
+sudo su - deploy -c "cd /www/aboutus/Dashboard && git fetch && git checkout $DEPLOY_SHA && $BUNDLE install && rake db:migrate"
 sudo su - root -c "/etc/init.d/nginx stop"
 sleep 1
 sudo su - root -c "/etc/init.d/nginx start"
