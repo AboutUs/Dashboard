@@ -75,7 +75,7 @@ WHERE a1.max_recorded_at = d1.recorded_at AND d1.family = a1.family AND d1.name 
   # specific period of time.
   def history
     historical = DataPoint.find_all_by_family_and_name(family, name, :order => :recorded_at, :conditions => [ 'value_num IS NOT NULL', 'recorded_at IS NOT NULL' ])
-    slice_size = (historical.last.recorded_at.to_i - historical.last.recorded_at.to_i) / HISTORY_ACCURACY
+    slice_size = (historical.last.recorded_at.to_i - historical.first.recorded_at.to_i) / HISTORY_ACCURACY
     slices = [historical.first]
     next_time = historical.first.recorded_at.to_i + slice_size
     historical.each do |dp|
