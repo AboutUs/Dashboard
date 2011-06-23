@@ -1,5 +1,5 @@
 body {
-    font-family: Helvetica;
+    font-family: "Gill Sans";
     margin: 0;
     padding: 0;
     background: #222;
@@ -38,16 +38,33 @@ div#wrapper {
 }
 
 #wrapper .featured dt {
-    width: 45%;
+    width: 38%;
     font-weight: 100;
-    font-family: "Helvetica Neue";
+    font-family: "Gill Sans";
+}
+
+#wrapper .featured dd div {
+   margin-top: 0;
+   padding-top: 0;
 }
 #wrapper .featured {
     width: 100%;
     clear: both;
-    font-size : 3em;
+    font-size : 2.2em;
 }
-.featured .number { padding-left: 1em; }
+.featured .number {
+   padding-left: 1em; 
+   width: 100px;
+}
+.featured .number, .featured .sparkline {
+   display: block; 
+
+   float: left;
+}
+
+.featured .current { color: #8CC7EC; }
+.featured .high { color: #4f4; }
+.featured .low { color: #f44; }
 
 #wrapper dl:after {
     /* Clearfix */
@@ -78,19 +95,19 @@ h2 {
 }
 #wrapper dl dt {
     padding : 0 1em 0 ;
-    width : 10em;
+    width : 7em;
     text-align : right;
     float: left;
     clear: left;
 }
 #wrapper .nonfeatured dl dt {
-    font-family: "Helvetica Neue";
+    font-family: "Gill Sans";
     letter-spacing: 0.055em;
     font-weight: 150;
 
 }
 #wrapper dl dd {
-    font-family: "Helvetica Neue";
+    font-family: "Gill Sans";
     margin : 0;
     float: left;
     clear : right;

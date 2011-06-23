@@ -20,8 +20,12 @@
             <dt><%= dp.family.titleize %> <%= dp.name.titleize %></dt>
             <% if dp.numerical? %>
               <dd>
-                <span class="sparkline"><%= dp.history.join(",") %></span>
-                <span class="number"><%= dp.value %></span>
+                <div>
+                <span class="sparkline"><%= dp.sampled_history.join(",") %></span>
+                <span class="number current"><%= dp.value %></span>
+                <span class="number high"><%= dp.high %></span>
+                <span class="number low"><%= dp.low %></span>
+                </div>
               </dd>
             <% else %>
               <dd><%= dp.value %></dd>
@@ -38,7 +42,14 @@
             <dl>
               <% data_points.each do |dp| %>
                 <dt><%= dp.name.titleize %></dt>
-                <dd><%= dp.value %></dd>
+                <% if dp.numerical? %>
+                  <dd>
+                    <span class="sparkline"><%= dp.sampled_history.join(",") %></span>
+                    <span class="number"><%= dp.value %></span>
+                  </dd>
+                <% else %>
+                  <dd><%= dp.value %></dd>
+                <% end %>
               <% end %>
             </dl>
           </div>
