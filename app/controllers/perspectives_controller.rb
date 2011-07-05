@@ -16,7 +16,7 @@ class PerspectivesController < ApplicationController
   # GET /perspectives/1.xml
   def show
     @perspective = Perspective.find(params[:id])
-
+    @perspective.preload
     respond_to do |format|
       format.html { render :layout => false }
       format.json { render :json => @perspective.data_points }
