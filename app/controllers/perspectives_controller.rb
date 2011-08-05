@@ -23,6 +23,12 @@ class PerspectivesController < ApplicationController
       format.xml  { render :xml => @perspective.data_points }
     end
   end
+  after_filter :recache, :only => 'show'
+
+  def recache
+    # recache for next time
+    @perspective.recache_data
+  end
 
   # GET /perspectives/new
   # GET /perspectives/new.xml
